@@ -1,9 +1,18 @@
-const ExpenseItem = () => {
-    return (
-			<div>
-				<h2>Expense item!</h2>
-			</div>
-    );
-};
+import { ExpenseDate } from './ExpenseDate';
+import { Card } from './Card';
 
-export default ExpenseItem;
+import './ExpenseItem.css';
+
+export const ExpenseItem = ({	expense	}) => {
+	const {	date, title, amount } = expense;
+
+	return (
+		<Card className='expense-item'>
+			<ExpenseDate date={date}/>
+			<div className='expense-item__description'>
+				<h2>{title}</h2>
+				<div className='expense-item__price'>${amount}</div>
+			</div>
+		</Card>
+	);
+};
