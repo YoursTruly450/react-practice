@@ -4,7 +4,7 @@ import { Card } from '../UI/Card';
 import './ExpenseItem.css';
 
 export const ExpenseItem = ({	expense	}) => {
-	const {	date, title, amount } = expense;
+	const {	date, amount, title } = expense;
 
 	return (
 		<Card className='expense-item'>
