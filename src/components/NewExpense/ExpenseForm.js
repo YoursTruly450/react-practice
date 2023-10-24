@@ -13,26 +13,26 @@ export const ExpenseForm = ({ onAddExpense }) => {
     enteredDate: '2019-01-01',
   });
 
-  const titleChangeHandler = (e) => {
-    setUserInput((prevState) => ({
-      ...prevState,
-      enteredTitle: e.target.value,
-    }));
-  };
+  // const titleChangeHandler = (e) => {
+  //   setUserInput((prevState) => ({
+  //     ...prevState,
+  //     enteredTitle: e.target.value,
+  //   }));
+  // };
 
-  const amountChangeHandler = (e) => {
-    setUserInput((prevState) => ({
-      ...prevState,
-      enteredAmount: e.target.value,
-    }));
-  };
+  // const amountChangeHandler = (e) => {
+  //   setUserInput((prevState) => ({
+  //     ...prevState,
+  //     enteredAmount: e.target.value,
+  //   }));
+  // };
 
-  const dateChangeHandler = (e) => {
-    setUserInput((prevState) => ({
-      ...prevState,
-      enteredDate: e.target.value,
-    }));
-  };
+  // const dateChangeHandler = (e) => {
+  //   setUserInput((prevState) => ({
+  //     ...prevState,
+  //     enteredDate: e.target.value,
+  //   }));
+  // };
 
   const submitFormHandler = (e) => {
     e.preventDefault();
@@ -51,6 +51,14 @@ export const ExpenseForm = ({ onAddExpense }) => {
     })
   };
 
+  const inputChangeHandler = (ident, value) => {
+    setUserInput((prev) => {
+      const obj = { ...prev };
+      obj[ident] = value;
+      return obj;
+    });
+  };
+
   return (
     <form onSubmit={submitFormHandler}>
       <div className='new-expense__controls'>
@@ -59,7 +67,7 @@ export const ExpenseForm = ({ onAddExpense }) => {
           <input
             type='text'
             value={userInput.enteredTitle}
-            onChange={titleChangeHandler}
+            onChange={event => inputChangeHandler('enteredTitle', event.target.value)}
           />
         </div>
         <div className='new-expense__control'>
@@ -69,7 +77,7 @@ export const ExpenseForm = ({ onAddExpense }) => {
             value={userInput.enteredAmount}
             min='0.01'
             step='0.01'
-            onChange={amountChangeHandler}
+            onChange={event => inputChangeHandler('enteredAmount', event.target.value)}
           />
         </div>
         <div className='new-expense__control'>
@@ -79,7 +87,7 @@ export const ExpenseForm = ({ onAddExpense }) => {
             value={userInput.enteredDate}
             min='2019-01-01'
             max='2022-12-31'
-            onChange={dateChangeHandler}
+            onChange={event => inputChangeHandler('enteredDate', event.target.value)}
           />
         </div>
       </div>
