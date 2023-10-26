@@ -73,7 +73,7 @@ export const ExpenseForm = ({ onAddExpense }) => {
 
   if (formHidden) {
     return (
-      <button onClick={showForm}>Add Expense</button>
+      <button onClick={showForm}>Add New Expense</button>
     );
   };
 
