@@ -13,6 +13,8 @@ export const ExpenseForm = ({ onAddExpense }) => {
     enteredDate: '2019-01-01',
   });
 
+  const [formHidden, setFormHidden] = useState(true);
+
   // const titleChangeHandler = (e) => {
   //   setUserInput((prevState) => ({
   //     ...prevState,
@@ -49,6 +51,8 @@ export const ExpenseForm = ({ onAddExpense }) => {
       enteredAmount: '',
       enteredDate: '2019-01-01',
     })
+  
+    hideForm();
   };
 
   const inputChangeHandler = (ident, value) => {
@@ -57,6 +61,20 @@ export const ExpenseForm = ({ onAddExpense }) => {
       obj[ident] = value;
       return obj;
     });
+  };
+
+  const showForm = () => {
+    setFormHidden(false);
+  };
+
+  const hideForm = () => {
+    setFormHidden(true);
+  };
+
+  if (formHidden) {
+    return (
+      <button onClick={showForm}>Add Expense</button>
+    );
   };
 
   return (
@@ -92,6 +110,7 @@ export const ExpenseForm = ({ onAddExpense }) => {
         </div>
       </div>
       <div className='new-expense__actions'>
+        <button type='button' onClick={hideForm}>Cancel</button>
         <button type='submit'>Add Expense</button>
       </div>
     </form>
